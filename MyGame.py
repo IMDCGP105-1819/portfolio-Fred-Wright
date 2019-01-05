@@ -134,39 +134,41 @@ while playing ==  True:
         hand1_pot = hand1_stake * 2
         break
     if hand1 == "raise":
+        while playing == True:
         print("How much would you like to raise?")
         raise1 = int(input())
-        if raise1 < 10000:
-            print("Thats too low, lowest bet is 10000")
-        if raise1 >= 10000 and raise1 < 100000:
-            print("Labat calmly puts in the calls your raise, not revealing anything.")
-            Chipcount = Chipcount - raise1
-            labat_chips = labat_chips - raise1
-            hand1_pot = raise1 * 2
-            break
-        if raise1 >= 100000 and raise1 < 200000:
-            print("As you collect the chips and put them into the middle, a hush falls through the room.")
-            print("Labat takes a few seconds to consider, arranges the chips needed to call, licks his lips and calls.")
-            Chipcount = Chipcount - raise1
-            labat_chips = labat_chips - raise1
-            hand1_pot = raise1 * 2
-            break
-        if raise1 >= 200000 and raise1 < Chipcount:
-            print("You grab the chips needed, a large stack, but you hear your dad cough a loud 2 coughs, maybe play things a little steadier")
-            print(A)
-            hand1 = input()
-        if raise1 > Chipcount:
-            print("You dont have that much chips to use, you have:", Chipcount)
-            print(A)
-            hand1 = input()
-        if raise1 == Chipcount:
-            print("You grab the chips needed, a large stack, but you hear your dad cough a loud 2 coughs, maybe play things a little steadier")
-            print(A)
-            hand1 = input()
-        else:
-            print("That is not a valid bet")
-            print("What would you like to do?")
-            hand1 = input()
+            if raise1 < 10000:
+                print("Thats too low, lowest bet is 10000")
+            if raise1 >= 10000 and raise1 < 100000:
+                print("Labat calmly puts in the calls your raise, not revealing anything.")
+                Chipcount = Chipcount - raise1
+                labat_chips = labat_chips - raise1
+                hand1_pot = raise1 * 2
+                break
+            if raise1 >= 100000 and raise1 < 200000:
+                print("As you collect the chips and put them into the middle, a hush falls through the room.")
+                print("Labat takes a few seconds to consider, arranges the chips needed to call, licks his lips and calls.")
+                Chipcount = Chipcount - raise1
+                labat_chips = labat_chips - raise1
+                hand1_pot = raise1 * 2
+                break
+            if raise1 >= 200000 and raise1 < Chipcount:
+                print("You grab the chips needed, a large stack, but you hear your dad cough a loud 2 coughs, maybe play things a little steadier")
+                print(A)
+                hand1 = input()
+            if raise1 > Chipcount:
+                print("You dont have that much chips to use, you have:", Chipcount)
+                print(A)
+                hand1 = input()
+            if raise1 == Chipcount:
+                print("You grab the chips needed, a large stack, but you hear your dad cough a loud 2 coughs, maybe play things a little steadier")
+                print(A)
+                hand1 = input()
+            else:
+                print("That is not a valid bet")
+                print("What would you like to do?")
+                hand1 = input()
+        break
     if hand1 == "RHTH":
         print("Your dad coughs twice")
         print(A)
@@ -1292,4 +1294,478 @@ while playing ==  True:
     else:
         print("Whats that? Type !Help if you're lost")
         hand2 = input()
+
 print(Chipcount, labat_chips)
+
+
+if Chipcount < 300000:
+    print("Esfandiari: Its been a bad start for", name, "Labat with one good hand, and a little bit of luck asserts a 300k lead.")
+    labat_chips = 475000
+    Chipcount = 375000
+    print("Lon: Yes however dont count", name, "out, we said before that both these players have taken down big players to get here, however", name, "i believe has that better track record.")
+    print("Esfandiari: Im prosuming you're talking about that nasty bluff against Phil Ivey, trip ace's versus a pair of 2's!", name, "has got balls, no doubt")
+    print("Lon: I was reffering to when he knocked you out with the strai-")
+    print("Esfandiari: Shutup! I would rather not relive that terrible experience.")
+    print("Lon: Ha! Well we are back after 2 hours 30 of close action, after a few decent hands for", name, "he's back to only being 100k behind")
+if Chipcount >= 300000 and Chipcount < 450000:
+    print("Esfandiari: Its been a alright start for", name, "Now both are moderately even in this showdown.")
+    print("And i think", name, "has it in him to do this.")
+    print("Lon: Yes however dont count Labat out, we said before that both these players have taken down big players to get here, however Labat i believe has that better track record.")
+    print("Esfandiari: Im prosuming you're talking about that nasty bluff against Phil Ivey, trip ace's versus a pair of 2's! Labat has got balls, no doubt")
+    print("Lon: Theres also", name, "Who knocked you out with the strai-")
+    print("Esfandiari: Shutup! I would rather not relive that terrible experience.")
+    print("Lon: Ha! Well we are back after 2 hours 30 of close action, after a few decent hands for", name, "he's now take a minor lead of 50k")
+    Chipcount = 450000
+    labat_chips = 400000
+if Chipcount >= 450000:
+    Chipcount = 575000
+    labat_chips = 275000
+    print("Esfandiari: Its been a good start for", name, "Getting out of the first major hand is a skill all great players need")
+    print("And i think", name, "has it in him to do this.")
+    print("Lon: Yes however dont count Labat out, we said before that both these players have taken down big players to get here, however Labat i believe has that better track record.")
+    print("Esfandiari: Im prosuming you're talking about that nasty bluff against Phil Ivey, trip ace's versus a pair of 2's! Labat has got balls, no doubt")
+    print("Lon: I was reffering to when he knocked you out with the strai-")
+    print("Esfandiari: Shutup! I would rather not relive that terrible experience.")
+    print("Lon: Ha! Well we are back after 2 hours 30 of close action, after a few decent hands for", name, "he's now take a commanding lead of 300k")
+
+print("We now resume the action.")
+print("With a couple of good hands, you feel momentum is now on your side, lets see if the next hand can convert it.")
+print("The dealer shuffles, passing both you and Labat 2 cards, you reveal them to be:")
+print("Q♠ & Q♦")
+print(A)
+hand1 = input()
+labat_chips = labat_chips - 25000
+Chipcount = Chipcount - 25000
+hand2pot = 50000
+while playing == True:
+    pre-flop
+    if hand1 == "fold":
+        unable
+    if hand1 == "check" or hand1 == "call":
+        flop
+        hand2 = input()
+        while playing == True:
+            if hand2 == "fold":
+                unable
+            if hand2 == "check" or hand2 == "call":
+                turn
+                hand3 = input()
+                while playing == True:
+                    if hand3 == "fold":
+                        unable
+                    if hand3 == "check" or hand3 == "call":
+                        river
+                        hand4 = input()
+                        while playing == True:
+                            if hand4 == "fold":
+                                unable
+                            if hand4 == "check" or hand4 == "call":
+                                allin
+                            if hand4 == "raise":
+                                raise1 = int(input())
+                                while playing == True:
+                                    if raise1 < 10000:
+                                        no
+                                    if raise1 >= 10000 and raise1 < 100000:
+                                        if labat_chips < 100000:
+                                            k
+                                        if labat_chips >= 100000:
+                                            k
+                                    if raise1 >= 100000 and raise1 < 200000:
+                                        if labat_chips < 100000:
+                                            k
+                                        if labat_chips >= 100000:
+                                            k
+                                    if raise1 >= 200000 and raise1 < labat_chips:
+                                        fold
+                                    if raise1 > labat_chips:
+                                        no
+                                    if raise1 == labat_chips:
+                                        allin
+                                    else:
+                                        print("Please place a valid bet")
+                                        raise1 = int(input())
+                                break
+                            if hand4 == "RHTH":
+                                p
+                            if hand4 == "AllIn":
+                                z
+                            if hand4 == "chipcount":
+                                z
+                            if hand4 == "!Help":
+                                z
+                            else:
+                                print("Whats that? Type !Help if you're lost")
+                                hand4 = input()
+                        break
+                    if hand3 == "raise":
+                        raise2 = int(input())
+                        while playing == True:
+                            if raise2 < 10000:
+                                no
+                            if raise2 >= 10000 and raise2 < 100000:
+                                if labat_chips < 100000:
+                                    k
+                                if labat_chips >= 100000:
+                                    calls
+                                    river
+                                    hand5 = input()
+                                    while playing == True:
+                                        if hand5 == "fold":
+                                            unable
+                                        if hand5 == "check" or hand5 == "call":
+                                            ok
+                                        if hand5 == "raise":
+                                            raise3 = int(input())
+                                            while playing == True:
+                                                if raise3 < 10000:
+                                                    no
+                                                if raise3 >= 10000 and raise3 < 100000:
+                                                    if labat_chips < 100000:
+                                                        k
+                                                    if labat_chips >= 100000:
+                                                        k
+                                                if raise3 >= 100000 and raise3 < 200000:
+                                                    if labat_chips < 100000:
+                                                        k
+                                                    if labat_chips >= 100000:
+                                                        k
+                                                if raise3 >= 200000 and raise3 < labat_chips:
+                                                    fold
+                                                if raise3 > labat_chips:
+                                                    no
+                                                if raise3 == labat_chips:
+                                                    allin
+                                                else:
+                                                    print("Please place a valid bet")
+                                                    raise3 = int(input())
+                                            break
+                                        if hand5 == "RHTH":
+                                            p
+                                        if hand5 == "AllIn":
+                                            z
+                                        if hand5 == "chipcount":
+                                            z
+                                        if hand5 == "!Help":
+                                            z
+                                        else:
+                                            print("Whats that? Type !Help if you're lost")
+                                            hand5 = input()
+                                    break
+                            if raise2 >= 100000 and raise2 < 200000:
+                                if labat_chips < 100000:
+                                    k
+                                if labat_chips >= 100000:
+                                    calls
+                                    river
+                                    hand6 = input()
+                                    while playing == True:
+                                        if hand6 == "fold":
+                                            unable
+                                        if hand6 == "check" or hand6 == "call":
+                                            ok
+                                        if hand6 == "raise":
+                                            raise4 = int(input())
+                                            while playing == True:
+                                                if raise4 < 10000:
+                                                    no
+                                                if raise4 >= 10000 and raise4 < 100000:
+                                                    if labat_chips < 100000:
+                                                        k
+                                                    if labat_chips >= 100000:
+                                                        k
+                                                if raise4 >= 100000 and raise4 < 200000:
+                                                    if labat_chips < 100000:
+                                                        k
+                                                    if labat_chips >= 100000:
+                                                        k
+                                                if raise4 >= 200000 and raise4 < labat_chips:
+                                                    fold
+                                                if raise4 > labat_chips:
+                                                    no
+                                                if raise4 == labat_chips:
+                                                    allin
+                                                else:
+                                                    print("Please place a valid bet")
+                                                    raise4 = int(input())
+                                            break
+                                        if hand6 == "RHTH":
+                                            p
+                                        if hand6 == "AllIn":
+                                            z
+                                        if hand6 == "chipcount":
+                                            z
+                                        if hand6 == "!Help":
+                                            z
+                                        else:
+                                            print("Whats that? Type !Help if you're lost")
+                                            hand6 = input()
+                                    break
+                            if raise2 >= 200000 and raise2 < labat_chips:
+                                fold
+                            if raise2 > labat_chips:
+                                no
+                            if raise2 == labat_chips:
+                                allin
+                            else:
+                                print("Please place a valid bet")
+                                raise2 = int(input())
+                        break
+                    if hand3 == "RHTH":
+                        p
+                    if hand3 == "AllIn":
+                        z
+                    if hand3 == "chipcount":
+                        z
+                    if hand3 == "!Help":
+                        z
+                    else:
+                        print("Whats that? Type !Help if you're lost")
+                        hand3 = input()
+                break
+            if hand2 == "raise":
+                raise5 = int(input())
+                while playing == True:
+                    if raise5 < 10000:
+                        no
+                    if raise5 >= 10000 and raise5 < 100000:
+                        if labat_chips < 100000:
+                            k
+                        if labat_chips >= 100000:
+                            k
+                    if raise5 >= 100000 and raise5 < 200000:
+                        if labat_chips < 100000:
+                            k
+                        if labat_chips >= 100000:
+                            k
+                    if raise5 >= 200000 and raise5 < labat_chips:
+                        fold
+                    if raise5 > labat_chips:
+                        no
+                    if raise5 == labat_chips:
+                        allin
+                    else:
+                        print("Please place a valid bet")
+                        raise1 = int(input())
+                break
+            if hand2 == "RHTH":
+                p
+            if hand2 == "AllIn":
+                z
+            if hand2 == "chipcount":
+                z
+            if hand2 == "!Help":
+                z
+            else:
+                print("Whats that? Type !Help if you're lost")
+                hand2 = input()
+        break
+    if hand1 == "raise":
+        if raise = 70k:
+        raise6 = int(input())
+        while playing == True:
+            if raise6 < 10000:
+                no
+            if raise6 >= 10000 and raise6 < 125000:
+                if labat_chips < 100000:
+                    k
+                if labat_chips >= 100000:
+                    flop
+                    hand7 = input()
+                    while playing == True:
+                        if hand7 == "fold":
+                            unable
+                        if hand7 == "check" or hand7 == "call":
+                            turn
+                            hand8 = input()
+                            while playing == True:
+                                if hand8 == "fold":
+                                    unable
+                                if hand8 == "check" or hand8 == "call":
+                                    allin
+                                if hand8 == "raise":
+                                    raise7 = int(input())
+                                    while playing == True:
+                                        if raise7 < 10000:
+                                            no
+                                        if raise7 >= 10000 and raise7 < 100000:
+                                            if labat_chips < 100000:
+                                                k
+                                            if labat_chips >= 100000:
+                                                river
+                                                hand9 = input()
+                                                while playing == True:
+                                                    if hand9 == "fold":
+                                                        unable
+                                                    if hand9 == "check" or hand9 == "call":
+                                                        allin
+                                                    if hand9 == "raise":
+                                                        raise8 = int(input())
+                                                        while playing == True:
+                                                            if raise8 < 10000:
+                                                                no
+                                                            if raise8 >= 10000 and raise8 < 100000:
+                                                                if labat_chips < 100000:
+                                                                    k
+                                                                if labat_chips >= 100000:
+                                                                    k
+                                                            if raise8 >= 100000 and raise8 < 200000:
+                                                                if labat_chips < 100000:
+                                                                    k
+                                                                if labat_chips >= 100000:
+                                                                    k
+                                                            if raise8 >= 200000 and raise8 < labat_chips:
+                                                                fold
+                                                            if raise8 > labat_chips:
+                                                                no
+                                                            if raise8 == labat_chips:
+                                                                allin
+                                                            else:
+                                                                print("Please place a valid bet")
+                                                                raise8 = int(input())
+                                                        break
+                                                    if hand9 == "RHTH":
+                                                        p
+                                                    if hand9 == "AllIn":
+                                                        z
+                                                    if hand9 == "chipcount":
+                                                        z
+                                                    if hand9 == "!Help":
+                                                        z
+                                                    else:
+                                                        print("Whats that? Type !Help if you're lost")
+                                                        hand9 = input()
+                                                break
+                                        if raise7 >= 100000 and raise7 < 200000:
+                                            if labat_chips < 100000:
+                                                k
+                                            if labat_chips >= 100000:
+                                                river
+                                                hand10 = input()
+                                                while playing == True:
+                                                    if hand10 == "fold":
+                                                        unable
+                                                    if hand10 == "check" or hand10 == "call":
+                                                        allin
+                                                    if hand10 == "raise":
+                                                        raise9 = int(input())
+                                                        while playing == True:
+                                                            if raise9 < 10000:
+                                                                no
+                                                            if raise9 >= 10000 and raise9 < 100000:
+                                                                if labat_chips < 100000:
+                                                                    k
+                                                                if labat_chips >= 100000:
+                                                                    k
+                                                            if raise9 >= 100000 and raise9 < 200000:
+                                                                if labat_chips < 100000:
+                                                                    k
+                                                                if labat_chips >= 100000:
+                                                                    k
+                                                            if raise9 >= 200000 and raise9 < labat_chips:
+                                                                fold
+                                                            if raise9 > labat_chips:
+                                                                no
+                                                            if raise9 == labat_chips:
+                                                                allin
+                                                            else:
+                                                                print("Please place a valid bet")
+                                                                raise9 = int(input())
+                                                        break
+                                                    if hand10 == "RHTH":
+                                                        p
+                                                    if hand10 == "AllIn":
+                                                        z
+                                                    if hand10 == "chipcount":
+                                                        z
+                                                    if hand10 == "!Help":
+                                                        z
+                                                    else:
+                                                        print("Whats that? Type !Help if you're lost")
+                                                        hand10 = input()
+                                                break
+                                        if raise7 >= 200000 and raise7 < labat_chips:
+                                            fold
+                                        if raise7 > labat_chips:
+                                            no
+                                        if raise7 == labat_chips:
+                                            allin
+                                        else:
+                                            print("Please place a valid bet")
+                                            raise7 = int(input())
+                                    break
+                                if hand8 == "RHTH":
+                                    p
+                                if hand8 == "AllIn":
+                                    z
+                                if hand8 == "chipcount":
+                                    z
+                                if hand8 == "!Help":
+                                    z
+                                else:
+                                    print("Whats that? Type !Help if you're lost")
+                                    hand4 = input()
+                            break
+                        if hand7 == "raise":
+                            raise10 = int(input())
+                            while playing == True:
+                                if raise10 < 10000:
+                                    no
+                                if raise10 >= 10000 and raise10 < 100000:
+                                    if labat_chips < 100000:
+                                        k
+                                    if labat_chips >= 100000:
+                                        k
+                                if raise10 >= 100000 and raise10 < 200000:
+                                    if labat_chips < 100000:
+                                        k
+                                    if labat_chips >= 100000:
+                                        k
+                                if raise10 >= 200000 and raise10 < labat_chips:
+                                    fold
+                                if raise10 > labat_chips:
+                                    no
+                                if raise10 == labat_chips:
+                                    allin
+                                else:
+                                    print("Please place a valid bet")
+                                    raise10 = int(input())
+                            break
+                        if hand7 == "RHTH":
+                            p
+                        if hand7 == "AllIn":
+                            z
+                        if hand7 == "chipcount":
+                            z
+                        if hand7 == "!Help":
+                            z
+                        else:
+                            print("Whats that? Type !Help if you're lost")
+                            hand7 = input()
+                    break
+            if raise6 >= 125000 and raise6 < 200000:
+                if labat_chips < 100000:
+                    k
+                if labat_chips >= 100000:
+                    k
+            if raise6 >= 200000 and raise6 < labat_chips:
+                fold
+            if raise6 > labat_chips:
+                no
+            if raise6 == labat_chips:
+                allin
+            else:
+                print("Please place a valid bet")
+                raise6 = int(input())
+        break
+    if hand1 == "RHTH":
+        p
+    if hand1 == "AllIn":
+        z
+    if hand1 == "chipcount":
+        z
+    if hand1 == "!Help":
+        z
+    else:
+        print("Whats that? Type !Help if you're lost")
+        hand1 = input()
