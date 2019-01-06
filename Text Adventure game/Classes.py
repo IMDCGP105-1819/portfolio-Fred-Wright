@@ -4,4 +4,6 @@ class player:
         self.location = 'a2'
         self.GameOver = False
         self.solves = 0
+
+        
 myPlayer = player()

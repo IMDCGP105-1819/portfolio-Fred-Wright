@@ -8,13 +8,9 @@ import random
 
 
 def intro():
-    print("argh")
+    print("Welcome to my amazing game")
     menuScreen()
 
-def helpMenu():
-    print("you can do play help or quit")
-    print("in game you can do...go, look, inspect, drop, use")
-    menuScreen()
 
 def menuScreen():
     inputM = input(">>")
@@ -34,7 +30,7 @@ def menuScreen():
         elif inputM.lower() == "quit":
             sys.exit(0)
 
-
+Solutions = 0
 Inventory = []
 InventroryFull = False
 ZoneName = ""
@@ -47,6 +43,7 @@ Left = 'left', 'west'
 Right = 'right', 'east'
 Item = 'item'
 ItemNeeded = 'itemneeded'
+CompleteDescription = ()
 
 
 solved_places = {'a1': False, 'a2': False, 'a3': False, 'a4': False, 'b1': False, 'b2': False, 'b3': False, 'b4': False}
@@ -55,6 +52,7 @@ ZoneMap = {                           # locations
           ZoneName: 'Town Hall',
           Description: 'Town hall for all needs and stuff.\n The stall you usually go to is closed however \nAlfred, the owner, is doing repairs \nmaybe we could help him',
           Examination: 'examine',
+          CompleteDescription: 'Hello',
           Solved: False,
           Up:'b1',
           Down:'b1',
@@ -67,6 +65,7 @@ ZoneMap = {                           # locations
           ZoneName: 'Home',
           Description: 'This is your home.\n You look at your mother reading the local paper.\n she seems to be squinting her eyes \nmaybe we could help her.',
           Examination: 'nothing special',
+          CompleteDescription: 'Hello',
           Solved: False,
           Up: 'b2',
           Down: 'b2',
@@ -79,6 +78,7 @@ ZoneMap = {                           # locations
           ZoneName: 'Hellish Path',
           Description: 'Oh no! While walking, you see a demon.\n thankfully he does not notice you, he seems to be looking around\n maybe he needs something',
           Examination: 'examine',
+          CompleteDescription: 'Hello',
           Solved: False,
           Up: 'b3',
           Down: 'b3',
@@ -91,6 +91,7 @@ ZoneMap = {                           # locations
           ZoneName: 'Unknown place',
           Description: 'An eerie place with no meaning, however where seems to be a circular spot on the floor. \nMaybe we need to place something here.',
           Examination: 'examine',
+          CompleteDescription: 'Hello',
           Solved: False,
           Up: 'b4',
           Down: 'b4',
@@ -103,6 +104,7 @@ ZoneMap = {                           # locations
           ZoneName: 'City cells',
           Description: 'While looking at the men and women in the cells you notice a familiar face. \nDad! He needs help, we should help him.',
           Examination: 'examine',
+          CompleteDescription: 'Hello',
           Solved: False,
           Up: 'a1',
           Down: 'a1',
@@ -115,6 +117,7 @@ ZoneMap = {                           # locations
           ZoneName: 'River',
           Description: 'While walking across the bank, you see a man. \nHe requires something to get water for his family. \nMaybe we could help',
           Examination: 'examine',
+          CompleteDescription: 'Hello',
           Solved: False,
           Up: 'a2',
           Down: 'a2',
@@ -127,6 +130,7 @@ ZoneMap = {                           # locations
     'b3': {
           ZoneName: 'Waterfall',
           Description: 'While atop of the waterfall, you see a woman screaming for her child. \n Her crying seems to mean she fears the worst.',
+          CompleteDescription: 'Hello',
           Examination: 'examine',
           Solved: False,
           Up: 'a3',
@@ -139,6 +143,7 @@ ZoneMap = {                           # locations
     'b4': {
           ZoneName: 'Highgarden',
           Description: 'A beautiful place where only the wealthiest live.\n covered in healthy farmland and large castles, it would be a dream to live here.',
+          CompleteDescription: 'Hello',
           Solved: False,
           Up: 'a4',
           Down: 'a4',
@@ -152,7 +157,7 @@ ZoneMap = {                           # locations
 #shows where you are
 def showLocation():
     print("\n", ("#" * (4 + len(myPlayer.location))) + "\n")
-    print("#" + myPlayer.location.upper() + "#")
+    print("You have now made it to", ZoneMap[myPlayer.location][ZoneName], ".")
     print("\n", ("#" * (4 + len(myPlayer.location))))
 
 def playerInspection():
@@ -166,18 +171,20 @@ def playerInspection():
 def playerInput():
     print("\n" + "#####################")
     print("What do you want to do?")
-    task = input(">>")
-    possibleTasks = ['go', 'look', 'inspect', 'use', 'help', 'pick up']
+    task = input(">> ")
+    possibleTasks = ['go', 'inventory', 'look', 'inspect', 'use', 'help', 'pick up', 'quit']
     while task.lower() not in possibleTasks:
         print("You cant do that")
         task = input(">>")
-    if task.lower() == "quit":
+
+    if task.lower() == "inventory":
+        playerInventory()
+
+    elif task.lower() == "quit":
         sys.exit(0)
+
     elif task.lower() == "go":
         move(task.lower())
-#    elif task.lower() in ['look', 'inspect', 'drop', 'use']:
-#        ExaminePlayer(action.lower())
-
 
     elif task.lower() in ['look', 'inspect']:
         playerInspection()
@@ -189,51 +196,80 @@ def playerInput():
         playerPickUp()
 
     elif task.lower() == "help":
-        print("you can do...go, look, inspect, drop, use")
+        print("you can do..'go', 'inventory', 'look', 'inspect', 'use', 'help', 'pick up', 'quit'")
         playerInput()
+
+def playerInventory():
+    print("\n", ("#" * (4 + len(Inventory))) + "\n")
+    print("You have a", Inventory, "in your inventory")
+    print("\n", ("#" * (4 + len(Inventory))) + "\n")
+
 
 def move(myAction):
     print("Where would you like to "+myAction+" to?\n> ")
     where = input(">>")
-    if where.lower() == "north":
+    if where.lower() in ['north', 'up']:
         destination = ZoneMap[myPlayer.location][Up]
         playerMovement(destination)
-    elif where.lower() == "south":
+    elif where.lower() in ['south', 'down']:
         destination = ZoneMap[myPlayer.location][Down]
         playerMovement(destination)
-    elif where.lower() == "west":
+    elif where.lower() in ['west', 'left']:
         destination = ZoneMap[myPlayer.location][Left]
         playerMovement(destination)
-    elif where.lower() == "east":
+    elif where.lower() in ['east', 'right']:
         destination = ZoneMap[myPlayer.location][Right]
         playerMovement(destination)
     else:
         print("You cant do that, either north, south, west or east")
         task = input(">>")
 
+def helpMenu():
+    print("This is my amazing game, you can do play, help or quit")
+    print("While playing you can do...'go', 'inventory', 'look', 'inspect', 'use', 'help', 'pick up', 'quit'")
+    menuScreen()
+
 def playerPickUp():
+    global InventroryFull
+
     if InventroryFull == False:
         if ZoneMap[myPlayer.location][Solved] == False:
             print("You picked up", ZoneMap[myPlayer.location][Item], "\nMaybe this could be used somewhere")
             Inventory.append(ZoneMap[myPlayer.location][Item])
             solved_places[myPlayer.location] == True
+            ZoneMap[myPlayer.location][Solved] = True
+            InventroryFull = True
+            return InventroryFull
         else:
             print("You have already used this item!")
     else:
         print("You are already holding an item!")
 
 def playerUse():
-    if Inventory == ZoneMap[myPlayer.location][ItemNeeded]:
+    global InventroryFull
+    global Solutions
+
+    if str(ZoneMap[myPlayer.location][ItemNeeded]) in Inventory:
+        print("You used that", Inventory, ".")
+        print(ZoneMap[myPlayer.location][CompleteDescription])
         Inventory.remove(ZoneMap[myPlayer.location][ItemNeeded])
-        ZoneMap[myPlayer.location][Solved] = True
+        InventroryFull = False
+        Solutions = Solutions + 1
+        if Solutions == 8:
+            GameOver()
+
+    elif ZoneMap[myPlayer.location][Solved] == False:
+        print("You have already helped here!")
     else:
         print(Inventory, "Is not used here")
 
+def GameOver():
+    print("You have restored order to that land")
+    sys.exit(0)
 
 
 
 def playerMovement(destination):
-    print("You have now made it to", ZoneMap[myPlayer.location][ZoneName], ".")
     myPlayer.location = destination
     showLocation()
 
