@@ -1,4 +1,5 @@
 from Classes import *
+from Story import *
 import cmd
 import textwrap
 import sys
@@ -8,11 +9,14 @@ import random
 
 
 def intro():
-    print("Welcome to my amazing game")
+    print("This is the normal land of Earth.")
+    print("Nothing more, nothing less")
+    print("This game was made by Fred Wright, Please Enjoy!")
     menuScreen()
 
 
 def menuScreen():
+    print("What would you like to do?")
     inputM = input(">>")
     if inputM.lower() == "play":
         startGame()
@@ -37,6 +41,7 @@ ZoneName = ""
 Description = 'description'
 Examination = 'examine'
 Solved = False
+Solved2 = False
 Up = 'up', 'north'
 Down = 'down', 'south'
 Left = 'left', 'west'
@@ -54,6 +59,7 @@ ZoneMap = {                           # locations
           Examination: 'examine',
           CompleteDescription: 'Hello',
           Solved: False,
+          Solved2: False,
           Up:'b1',
           Down:'b1',
           Left:'a4',
@@ -67,6 +73,7 @@ ZoneMap = {                           # locations
           Examination: 'nothing special',
           CompleteDescription: 'Hello',
           Solved: False,
+          Solved2: False,
           Up: 'b2',
           Down: 'b2',
           Left: 'a1',
@@ -80,6 +87,7 @@ ZoneMap = {                           # locations
           Examination: 'examine',
           CompleteDescription: 'Hello',
           Solved: False,
+          Solved2: False,
           Up: 'b3',
           Down: 'b3',
           Left: 'a2',
@@ -93,11 +101,12 @@ ZoneMap = {                           # locations
           Examination: 'examine',
           CompleteDescription: 'Hello',
           Solved: False,
+          Solved2: False,
           Up: 'b4',
           Down: 'b4',
           Left: 'a3',
           Right: 'a1',
-          Item: 'Wooden plank', #for town hall
+          Item: 'jug', #for town hall
           ItemNeeded: 'Multicoloured ball'
     },
     'b1': {
@@ -106,11 +115,12 @@ ZoneMap = {                           # locations
           Examination: 'examine',
           CompleteDescription: 'Hello',
           Solved: False,
+          Solved2: False,
           Up: 'a1',
           Down: 'a1',
           Left: 'b4',
           Right: 'b2',
-          Item: 'jug', #for river
+          Item: 'Shovel', #for river
           ItemNeeded: 'Key'
     },
     'b2': {
@@ -119,6 +129,7 @@ ZoneMap = {                           # locations
           Examination: 'examine',
           CompleteDescription: 'Hello',
           Solved: False,
+          Solved2: False,
           Up: 'a2',
           Down: 'a2',
           Left: 'b1',
@@ -133,11 +144,12 @@ ZoneMap = {                           # locations
           CompleteDescription: 'Hello',
           Examination: 'examine',
           Solved: False,
+          Solved2: False,
           Up: 'a3',
           Down: 'a3',
           Left: 'b2',
           Right: 'b4',
-          Item: 'Shovel', # for hellish
+          Item: 'Wooden plank', # for hellish
           ItemNeeded: 'Bone'
     },
     'b4': {
@@ -145,6 +157,7 @@ ZoneMap = {                           # locations
           Description: 'A beautiful place where only the wealthiest live.\n covered in healthy farmland and large castles, it would be a dream to live here.',
           CompleteDescription: 'Hello',
           Solved: False,
+          Solved2: False,
           Up: 'a4',
           Down: 'a4',
           Left: 'b3',
@@ -156,20 +169,19 @@ ZoneMap = {                           # locations
 }
 #shows where you are
 def showLocation():
-    print("\n", ("#" * (4 + len(myPlayer.location))) + "\n")
+    print("#" * (25 + len(ZoneMap[myPlayer.location][ZoneName])))
     print("You have now made it to", ZoneMap[myPlayer.location][ZoneName], ".")
-    print("\n", ("#" * (4 + len(myPlayer.location))))
+    print("#" * (25 + len(ZoneMap[myPlayer.location][ZoneName])))
 
 def playerInspection():
     if solved_places[myPlayer.location] == False:
-        print("\n", ("#" * (4 + len(ZoneMap[myPlayer.location][Description]))) + "\n")
+        print("\n############################\n")
         print("# ", ZoneMap[myPlayer.location][Description], " #")
-        print("\n", ("#" * (4 + len(ZoneMap[myPlayer.location][Description]))) + "\n")
+        print("\n############################\n")
     else:
         print("Everything seems normal here")
 
 def playerInput():
-    print("\n" + "#####################")
     print("What do you want to do?")
     task = input(">> ")
     possibleTasks = ['go', 'inventory', 'look', 'inspect', 'use', 'help', 'pick up', 'quit']
@@ -222,7 +234,7 @@ def move(myAction):
         playerMovement(destination)
     else:
         print("You cant do that, either north, south, west or east")
-        task = input(">>")
+        where = input(">>")
 
 def helpMenu():
     print("This is my amazing game, you can do play, help or quit")
@@ -233,11 +245,11 @@ def playerPickUp():
     global InventroryFull
 
     if InventroryFull == False:
-        if ZoneMap[myPlayer.location][Solved] == False:
+        if ZoneMap[myPlayer.location][Solved2] == False:
             print("You picked up", ZoneMap[myPlayer.location][Item], "\nMaybe this could be used somewhere")
             Inventory.append(ZoneMap[myPlayer.location][Item])
             solved_places[myPlayer.location] == True
-            ZoneMap[myPlayer.location][Solved] = True
+            ZoneMap[myPlayer.location][Solved2] = True
             InventroryFull = True
             return InventroryFull
         else:
@@ -250,24 +262,41 @@ def playerUse():
     global Solutions
 
     if str(ZoneMap[myPlayer.location][ItemNeeded]) in Inventory:
-        print("You used that", Inventory, ".")
         print(ZoneMap[myPlayer.location][CompleteDescription])
         Inventory.remove(ZoneMap[myPlayer.location][ItemNeeded])
         InventroryFull = False
         Solutions = Solutions + 1
+        if ZoneMap[myPlayer.location][ZoneName] == "Town Hall":
+            Town_Hall()
+            playerInput()
+        elif ZoneMap[myPlayer.location][ZoneName] == 'Home':
+            Home_Text()
+            playerInput()
+        elif ZoneMap[myPlayer.location][ZoneName] == 'Hellish Path':
+            Hellish_Path()
+            playerInput()
+        elif ZoneMap[myPlayer.location][ZoneName] == 'Unknown place':
+            Unknown_Place()
+            playerInput()
+        elif ZoneMap[myPlayer.location][ZoneName] == 'City cells':
+            City_Cells()
+            playerInput()
+        elif ZoneMap[myPlayer.location][ZoneName] == 'River':
+            River_Text()
+            playerInput()
+        elif ZoneMap[myPlayer.location][ZoneName] == 'Waterfall':
+            Waterfall_Text()
+            playerInput()
+        elif ZoneMap[myPlayer.location][ZoneName] == 'Highgarden':
+            Highgarden_Text()
+            playerInput()
         if Solutions == 8:
             GameOver()
 
-    elif ZoneMap[myPlayer.location][Solved] == False:
+    elif ZoneMap[myPlayer.location][Solved] == True:
         print("You have already helped here!")
     else:
         print(Inventory, "Is not used here")
-
-def GameOver():
-    print("You have restored order to that land")
-    sys.exit(0)
-
-
 
 def playerMovement(destination):
     myPlayer.location = destination
