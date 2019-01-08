@@ -12,6 +12,7 @@ def intro():
     print("This is the normal land of Earth.")
     print("Nothing more, nothing less")
     print("This game was made by Fred Wright, Please Enjoy!")
+    print("Type Help if you ever get lost")
     menuScreen()
 
 
