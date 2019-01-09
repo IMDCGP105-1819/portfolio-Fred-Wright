@@ -5,5 +5,4 @@ class player:
         self.GameOver = False
         self.solves = 0
 
-        
 myPlayer = player()

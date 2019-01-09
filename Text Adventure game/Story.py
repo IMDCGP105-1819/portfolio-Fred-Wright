@@ -1,10 +1,13 @@
-#Story related stuff:
 import cmd
 import textwrap
 import sys
 import os
 import time
 import random
+
+
+
+#text.
 
 def Town_Hall():
     line1 = "Although carrying it was a pain, you reach the town hall.\nAlfred notices you and immideately waves his son to take the plank off you.\n"
@@ -148,7 +151,7 @@ def Waterfall_Text():
 
 def Highgarden_Text():
     line1 = "While walking through the fields of flowers the mystical fiery bolt begins to heat up in your pocket..\n"
-    line2 = "It heat up so much that when you take it out it burns your fingers. \nIt glows brighter and brighter, and you notice small sparks come off it..\n"
+    line2 = "It heats up so much that when you take it out it burns your fingers. \nIt glows brighter and brighter, and you notice small sparks come off it..\n"
     line3 = "Those sparks lead to flares, these flares catch fire on the flowers engulfing the meadow.\nThe Flares get bigger, and more frequent, you slowly begin to walk away.\n"
     line4 = "Slowly turns to quickly as the flares spew like a volcano around it, quickly walking turns to flat out running.\n"
     line5 = "Locals notice and begin to run with you, the flares become fireballs that explode on the castles.\nCausing explosions, these fireballs melt all in their way, causing utter carnage and consume the lands.\n"
