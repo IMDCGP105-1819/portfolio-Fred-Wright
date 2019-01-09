@@ -8,6 +8,8 @@ import time
 import random
 
 
+##There is a bug, doing use at home with the wrong item causes You have already helped here! to show, i dont know what causes this as there is only 1 thing that determines its solved status.
+
 def intro():
     print("This is the normal land of Earth.")
     print("Nothing more, nothing less")
@@ -175,7 +177,7 @@ def showLocation():
     print("#" * (25 + len(ZoneMap[myPlayer.location][ZoneName])))
 
 def playerInspection():
-    if solved_places[myPlayer.location] == False:
+    if solved_places[myPlayer.location] == True:
         print("\n############################\n")
         print("# ", ZoneMap[myPlayer.location][Description], " #")
         print("\n############################\n")
@@ -249,7 +251,6 @@ def playerPickUp():
         if ZoneMap[myPlayer.location][Solved2] == False:
             print("You picked up", ZoneMap[myPlayer.location][Item], "\nMaybe this could be used somewhere")
             Inventory.append(ZoneMap[myPlayer.location][Item])
-            solved_places[myPlayer.location] == True
             ZoneMap[myPlayer.location][Solved2] = True
             InventroryFull = True
             return InventroryFull
@@ -262,53 +263,40 @@ def playerUse():
     global InventroryFull
     global Solutions
 
-    if str(ZoneMap[myPlayer.location][ItemNeeded]) in Inventory:
+    if ZoneMap[myPlayer.location][ItemNeeded] in Inventory:
         print(ZoneMap[myPlayer.location][CompleteDescription])
         Inventory.remove(ZoneMap[myPlayer.location][ItemNeeded])
         InventroryFull = False
+        ZoneMap[myPlayer.location][Solved] == True
         Solutions = Solutions + 1
-        if ZoneMap[myPlayer.location][ZoneName] == "Town Hall":
+        if ZoneMap[myPlayer.location][ZoneName] == 'Town Hall':
             Town_Hall()
-            playerInput()
         elif ZoneMap[myPlayer.location][ZoneName] == 'Home':
             Home_Text()
-            playerInput()
         elif ZoneMap[myPlayer.location][ZoneName] == 'Hellish Path':
             Hellish_Path()
-            playerInput()
         elif ZoneMap[myPlayer.location][ZoneName] == 'Unknown place':
             Unknown_Place()
-            playerInput()
         elif ZoneMap[myPlayer.location][ZoneName] == 'City cells':
             City_Cells()
-            playerInput()
         elif ZoneMap[myPlayer.location][ZoneName] == 'River':
             River_Text()
-            playerInput()
         elif ZoneMap[myPlayer.location][ZoneName] == 'Waterfall':
             Waterfall_Text()
-            playerInput()
         elif ZoneMap[myPlayer.location][ZoneName] == 'Highgarden':
             Highgarden_Text()
-            playerInput()
         if Solutions == 8:
             GameOver()
 
-    elif ZoneMap[myPlayer.location][Solved] == True:
+    if ZoneMap[myPlayer.location][Solved] == True:
         print("You have already helped here!")
+
     else:
         print(Inventory, "Is not used here")
 
 def playerMovement(destination):
     myPlayer.location = destination
     showLocation()
-
-def ExaminePlayer(action):
-    if solved_places[myPlayer.location][Solved] == False:
-        print("\n", ZoneMap[myPlayer.location][Examination])
-        print("\n", ZoneMap[myPlayer.location][Examination])
-    else:
-        gameplay
 
 def gamePlay():
     while myPlayer.GameOver == False:

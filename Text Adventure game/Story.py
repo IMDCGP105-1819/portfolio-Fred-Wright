@@ -186,7 +186,7 @@ def Highgarden_Text():
 def GameOver():
     line1 = "While walking back to home you feel a strange presence, before you know it, you body has fainted and through the bump of your head on the floor, you wake up..\n"
     line2 = "The floor is smouldering, heat covers your body, when you arise to your feet, the demon is looking at you.\n"
-    line3 = "Demon: You know why your here?\nPetrified, You shake your head from side to side...\n"
+    line3 = "Demon: You know why you're here?\nPetrified, You shake your head from side to side...\n"
     line4 = "Demon: You've completed the game, restored balance to your world.\n"
     line14 = "Actually.. no you havent.\n"
     line5 = "I serve the god of death, Hades and he is displeased with your actions.\nYour father was condemned to death, however you saved him, taking him from Hades.\n"
