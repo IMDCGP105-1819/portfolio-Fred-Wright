@@ -194,7 +194,7 @@ def GameOver():
     line14 = "Actually.. no you havent.\n"
     line5 = "I serve the god of death, Hades and he is displeased with your actions.\nYour father was condemned to death, however you saved him, taking him from Hades.\n"
     line6 = "He was inprisoned for breaking the stall of a man called Alfred.\nHe did this because your mother and him slept together.\n"
-    line7 = "Hades origionally wanted Alfred dead, however your father was weak, just like you.\nHades then hoped that Alfred's wife would kill him, however that did not happen.\n"
+    line7 = "Hades originally wanted Alfred dead, however your father was weak, just like you.\nHades then hoped that Alfred's wife would kill him, however that did not happen.\n"
     line8 = "Hades had condemned another family, starving and dehydrating them. \nThrough your actions they killed a mystical being, by the shape of a P, and they drunk from the river, with help of your jug.\n"
     line9 = "By my math you have taken 6 lives from hades, the 6th being your mother.\n"
     line15 = "My mother!?\n"
